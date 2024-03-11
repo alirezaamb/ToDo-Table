@@ -77,7 +77,7 @@
             <th>Deadline</th>
             <th>Action</th>
           </thead>
-          <tbody class="">
+          <tbody id="table_body" class="">
             <tr class="p-4 text-center">
               <td class="text-left pb-5">do Homework</td>
               <td class="pb-5">
@@ -235,22 +235,23 @@
               type="text"
               placeholder="Task"
               class="border"
+              id="task_input"
             /> </label
           ><br />
           <label
             >Priority: <br />
             <select class="rounded cursor-pointer" name="Priority" id="">
-              <option value="">Low</option>
-              <option value="">Medium</option>
-              <option value="">High</option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
             </select> </label
           ><br />
           <label
             >Status: <br />
             <select class="rounded cursor-pointer" name="Status" id="">
-              <option value="">ToDo</option>
-              <option value="">Doing</option>
-              <option value="">Done</option>
+              <option value="ToDo">ToDo</option>
+              <option value="Doing">Doing</option>
+              <option value="Done">Done</option>
             </select> </label
           ><br />
           <label
