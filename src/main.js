@@ -64,7 +64,7 @@ function submitHandler(event) {
     event.preventDefault();
 
     if (validateInputs()) {
-        const item = {
+        const todo = {
             title: taskTitle.value,
             deadline: taskDeadline.value,
             priority: prioritySelect.value,
@@ -73,7 +73,7 @@ function submitHandler(event) {
             statusColor: changeStatus(),
             id: Date.now()
         }
-        todoItems.push(item)
+        todoItems.push(todo)
         renderData(todoItems)
 
 
@@ -118,6 +118,7 @@ function openModal() {
 
 function createTableRow(item) {
     const tableRow = document.createElement('tr')
+    tableRow.setAttribute('id', item.id)
     tableRow.classList.add("p-4", "text-center")
     const titleTd = document.createElement('td')
     //text of title
@@ -154,6 +155,7 @@ function createTableRow(item) {
     const deleteIcon = document.createElement('img')
     deleteIcon.src = "./assets/svg/trash-solid.svg"
     deleteIcon.classList.add('w-4', 'cursor-pointer')
+    deleteIcon.setAttribute("id", item.id)
     //edit icon
     const editIcon = document.createElement('img')
     editIcon.src = "./assets/svg/edit-solid.svg"
@@ -168,5 +170,18 @@ function createTableRow(item) {
 
     tableRow.append(titleTd, priorityTd, statusTd, deadlineTd, actionTd)
     tbody.append(tableRow)
+
+    //delete icon
+    deleteIcon.addEventListener("click", deleteHandler)
+    // //edit icon
+    // editIcon.addEventListener("click", editHandler)
+    // //eye icon
+    // eyeIcon.addEventListener("click", viewHandler)
 }
 
+function deleteHandler(e) {
+    // console.log(e.target.id)
+    let id = e.target.id
+    todoItems = todoItems.filter((item) => item.id != id)
+    renderData(todoItems)
+}
