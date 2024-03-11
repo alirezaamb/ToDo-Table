@@ -8,7 +8,23 @@ flatpickr('#datepicker', {
 const addButton = document.getElementById("add_btn")
 const taskTitle = document.getElementById("task_input")
 const tbody = document.getElementById("table_body")
+const modalOverlay = document.getElementById("modal_overlay")
+const modalBody = document.getElementById("modal_body")
 
+//open and close modal
+addButton.addEventListener("click", openModal)
+modalOverlay.addEventListener("click", closeModal)
+
+function closeModal() {
+    modalOverlay.classList.add("hidden")
+    modalBody.classList.add("hidden")
+}
+
+function openModal() {
+    modalOverlay.classList.remove("hidden")
+    modalBody.classList.remove("hidden")
+
+}
 
 
 function createTableRow(item) {
