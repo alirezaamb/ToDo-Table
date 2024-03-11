@@ -242,7 +242,11 @@
         ><br />
         <label
           >Priority: <br />
-          <select class="rounded cursor-pointer" name="Priority" id="">
+          <select
+            class="rounded cursor-pointer"
+            name="Priority"
+            id="priority_select"
+          >
             <option value="Low">Low</option>
             <option value="Medium">Medium</option>
             <option value="High">High</option>
@@ -250,7 +254,11 @@
         ><br />
         <label
           >Status: <br />
-          <select class="rounded cursor-pointer" name="Status" id="">
+          <select
+            class="rounded cursor-pointer"
+            name="Status"
+            id="status_select"
+          >
             <option value="ToDo">ToDo</option>
             <option value="Doing">Doing</option>
             <option value="Done">Done</option>
@@ -266,6 +274,7 @@
           /> </label
         ><br />
         <button
+          id="submit_button"
           class="absolute bottom-14 bg-green-300 px-3 py-1 rounded-md hover:bg-green-700 hover:text-white transition-all"
           type="submit"
         >

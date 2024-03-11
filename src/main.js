@@ -5,11 +5,93 @@ flatpickr('#datepicker', {
 
 });
 
-const addButton = document.getElementById("add_btn")
-const taskTitle = document.getElementById("task_input")
-const tbody = document.getElementById("table_body")
-const modalOverlay = document.getElementById("modal_overlay")
-const modalBody = document.getElementById("modal_body")
+const addButton = document.getElementById("add_btn");
+const tbody = document.getElementById("table_body");
+const modalOverlay = document.getElementById("modal_overlay");
+const modalBody = document.getElementById("modal_body");
+const submitButton = document.getElementById('submit_button');
+const taskTitle = document.getElementById("task_input");
+const prioritySelect = document.getElementById("priority_select");
+const statusSelect = document.getElementById("status_select");
+const taskDeadline = document.getElementById("datepicker");
+
+let todoItems = [];
+
+prioritySelect.addEventListener("change", changePriority);
+statusSelect.addEventListener("change", changeStatus);
+submitButton.addEventListener("click", submitHandler);
+
+function changeStatus() {
+    let statusColor = ''
+    switch (statusSelect.value) {
+        case "ToDo":
+            statusColor = "bg-red-500"
+
+            break;
+        case "Doing":
+            statusColor = "bg-yellow-500"
+
+            break;
+        case "Done":
+            statusColor = "bg-green-500"
+
+            break;
+    }
+    // console.log(statusColor, status)
+    return statusColor
+}
+
+function changePriority() {
+    let priorityColor = ''
+    switch (prioritySelect.value) {
+        case "Low":
+            priorityColor = "bg-red-500"
+            break;
+        case "Medium":
+            priorityColor = "bg-yellow-500"
+            break;
+        case "High":
+            priorityColor = "bg-green-500"
+            break;
+    }
+    // console.log(prioritySelect.value)
+    return priorityColor
+}
+
+function submitHandler(event) {
+    event.preventDefault();
+
+    if (validateInputs()) {
+        const item = {
+            title: taskTitle.value,
+            deadline: taskDeadline.value,
+            priority: prioritySelect.value,
+            status: statusSelect.value,
+            priorityColor: changePriority(),
+            statusColor: changeStatus(),
+            id: Date.now()
+        }
+        todoItems.push(item)
+
+
+
+    }
+}
+
+
+function validateInputs() {
+    if (taskTitle.value === "" || taskDeadline.value === "") {
+        alert("Please enter the inputs")
+        return false
+    }
+    return true
+}
+
+
+
+
+
+
 
 //open and close modal
 addButton.addEventListener("click", openModal)
