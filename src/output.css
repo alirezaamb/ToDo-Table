@@ -642,6 +642,10 @@ video {
   display: table;
 }
 
+.hidden {
+  display: none;
+}
+
 .h-2\/4 {
   height: 50%;
 }
@@ -678,6 +682,10 @@ video {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.cursor-not-allowed {
+  cursor: not-allowed;
 }
 
 .flex-wrap {
@@ -847,6 +855,15 @@ video {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+.hover\:border:hover {
+  border-width: 1px;
+}
+
+.hover\:border-red-600:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(220 38 38 / var(--tw-border-opacity));
 }
 
 .hover\:bg-green-700:hover {

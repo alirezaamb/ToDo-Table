@@ -32,6 +32,7 @@
               class="border-0 rounded bg-indigo-500"
               type="search"
               placeholder="     Search"
+              disabled
             />
             <svg
               class="w-4 absolute left-1 top-1"
@@ -45,7 +46,7 @@
             </svg>
           </div>
           <svg
-            class="w-5"
+            class="w-5 cursor-not-allowed"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
           >
@@ -55,7 +56,8 @@
             />
           </svg>
           <svg
-            class="w-5"
+            id="add_btn"
+            class="w-5 cursor-pointer"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 448 512"
           >
@@ -220,7 +222,7 @@
     </div>
     <!-- modal -->
     <div
-      class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 w-full h-full bg-gray-500 bg-opacity-70"
+      class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 w-full h-full bg-gray-500 bg-opacity-70 hidden"
     >
       <div
         class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 w-2/4 h-2/4 bg-gray-200 rounded p-2"
@@ -231,13 +233,13 @@
             <input
               class="rounded"
               type="text"
-              placeholder=""
+              placeholder="Task"
               class="border"
             /> </label
           ><br />
           <label
             >Priority: <br />
-            <select class="rounded" name="Priority" id="">
+            <select class="rounded cursor-pointer" name="Priority" id="">
               <option value="">Low</option>
               <option value="">Medium</option>
               <option value="">High</option>
@@ -245,7 +247,7 @@
           ><br />
           <label
             >Status: <br />
-            <select class="rounded" name="Status" id="">
+            <select class="rounded cursor-pointer" name="Status" id="">
               <option value="">ToDo</option>
               <option value="">Doing</option>
               <option value="">Done</option>
