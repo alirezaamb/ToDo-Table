@@ -6,7 +6,7 @@
   "scripts": {
     "start-tailwind": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch"
   },
-  "author": "Alireza Amb",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "tailwindcss": "^3.4.1"
