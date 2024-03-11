@@ -20,6 +20,8 @@ let todoItems = [];
 prioritySelect.addEventListener("change", changePriority);
 statusSelect.addEventListener("change", changeStatus);
 submitButton.addEventListener("click", submitHandler);
+addButton.addEventListener("click", openModal)
+modalOverlay.addEventListener("click", closeModal)
 
 function changeStatus() {
     let statusColor = ''
@@ -72,12 +74,21 @@ function submitHandler(event) {
             id: Date.now()
         }
         todoItems.push(item)
+        renderData(todoItems)
 
 
-
+        closeModal()
     }
+    clearInputs()
 }
 
+function renderData(todoItems) {
+    tbody.innerHTML = ""
+
+    todoItems.forEach((item) => {
+        createTableRow(item)
+    })
+}
 
 function validateInputs() {
     if (taskTitle.value === "" || taskDeadline.value === "") {
@@ -88,14 +99,10 @@ function validateInputs() {
 }
 
 
-
-
-
-
-
-//open and close modal
-addButton.addEventListener("click", openModal)
-modalOverlay.addEventListener("click", closeModal)
+function clearInputs() {
+    taskTitle.value = ""
+    taskDeadline.value = ""
+}
 
 function closeModal() {
     modalOverlay.classList.add("hidden")
@@ -161,7 +168,5 @@ function createTableRow(item) {
 
     tableRow.append(titleTd, priorityTd, statusTd, deadlineTd, actionTd)
     tbody.append(tableRow)
-
-
 }
 
