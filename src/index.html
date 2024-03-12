@@ -69,30 +69,32 @@
         </div>
       </header>
       <main>
-        <table class="container m-3">
-          <thead>
-            <th class="flex items-start">Task Name</th>
-            <th>Priority</th>
-            <th>Status</th>
-            <th>Deadline</th>
-            <th>Action</th>
+        <table class="container my-3">
+          <thead class="">
+            <tr class="h-[40px]">
+              <th class="text-left border border-slate-300">Task Name</th>
+              <th class="border border-slate-300">Priority</th>
+              <th class="border border-slate-300">Status</th>
+              <th class="border border-slate-300">Deadline</th>
+              <th class="border border-slate-300">Action</th>
+            </tr>
           </thead>
           <tbody id="table_body" class="">
             <!-- samples -->
-            <!-- <tr class="p-4 text-center">
-              <td class="text-left pb-5">do Homework</td>
-              <td class="pb-5">
+            <!-- <tr class="p-4 text-center h-[50px]">
+              <td class="text-left border border-slate-300">do Homework</td>
+              <td class="border border-slate-300">
                 <span class="bg-gray-400 px-3 py-1 rounded-2xl">Low</span>
               </td>
-              <td class="pb-5">
+              <td class="border border-slate-300">
                 <span class="bg-red-500 px-3 py-1 rounded-2xl">Todo</span>
               </td>
-              <td class="pb-5">
+              <td class="border border-slate-300">
                 <span class="border rounded-2xl px-2 py-1 border-blue-500"
                   >1401/12/11</span
                 >
               </td>
-              <td class="flex gap-3 justify-center pb-5">
+              <td class="flex gap-3 justify-center border border-slate-300 p-5">
                 <svg
                   class="w-4 cursor-pointer"
                   xmlns="http://www.w3.org/2000/svg"
@@ -124,8 +126,8 @@
                   />
                 </svg>
               </td>
-            </tr>
-            <tr class="p-4 text-center">
+            </tr> -->
+            <!-- <tr class="p-4 text-center">
               <td class="text-left pb-5">do Homework</td>
               <td class="pb-5">
                 <span class="bg-yellow-400 px-3 py-1 rounded-2xl">Medium</span>
@@ -279,7 +281,7 @@
           class="absolute bottom-14 bg-green-300 px-3 py-1 rounded-md hover:bg-green-700 hover:text-white transition-all"
           type="submit"
         >
-          submit
+          Submit
         </button>
       </form>
     </div>

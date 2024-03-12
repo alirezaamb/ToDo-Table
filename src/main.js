@@ -29,6 +29,7 @@ modalOverlay.addEventListener('click', closeModal);
 
 function changeStatus() {
   let statusColor = '';
+
   switch (statusSelect.value) {
     case 'ToDo':
       statusColor = 'bg-red-500';
@@ -69,7 +70,7 @@ function submitHandler(event) {
 
   if (validateInputs()) {
     if (!isEdit.mode) {
-      const todo = {
+      let todo = {
         title: taskTitle.value,
         deadline: taskDeadline.value,
         priority: prioritySelect.value,
@@ -79,6 +80,9 @@ function submitHandler(event) {
         id: Date.now(),
       };
       todoItems.push(todo);
+
+      // saveItems();
+      // localStorageGet();
       renderData(todoItems);
     } else {
       editData(isEdit.id);
@@ -86,6 +90,7 @@ function submitHandler(event) {
     closeModal();
     clearInputs();
   }
+  submitButton.innerText = 'Submit';
 }
 
 function renderData(todoItems) {
@@ -122,13 +127,13 @@ function openModal() {
 function createTableRow(item) {
   const tableRow = document.createElement('tr');
   tableRow.setAttribute('id', item.id);
-  tableRow.classList.add('p-4', 'text-center');
+  tableRow.classList.add('p-4', 'text-center', 'h-[20px]');
   const titleTd = document.createElement('td');
   //text of title
   titleTd.innerText = item.title;
-  titleTd.classList.add('text-left', 'pb-5');
+  titleTd.classList.add('text-left', 'border', 'border-slate-300');
   const priorityTd = document.createElement('td');
-  priorityTd.classList.add('pb-5');
+  priorityTd.classList.add('border', 'border-slate-300');
   const prioritySpan = document.createElement('span');
   prioritySpan.classList.add('px-3', 'py-1', 'rounded-2xl');
   //color of priority
@@ -137,7 +142,7 @@ function createTableRow(item) {
   prioritySpan.innerText = `${item.priority}`;
   priorityTd.append(prioritySpan);
   const statusTd = document.createElement('td');
-  statusTd.classList.add('pb-5');
+  statusTd.classList.add('border', 'border-slate-300');
   const statusSpan = document.createElement('span');
   statusSpan.classList.add('px-3', 'py-1', 'rounded-2xl');
   //color of status
@@ -146,7 +151,7 @@ function createTableRow(item) {
   statusSpan.innerText = `${item.status}`;
   statusTd.append(statusSpan);
   const deadlineTd = document.createElement('td');
-  deadlineTd.classList.add('pb-5');
+  deadlineTd.classList.add('border', 'border-slate-300');
   const deadlineSpan = document.createElement('span');
   //text of deadline
   deadlineSpan.innerText = item.deadline;
@@ -159,7 +164,14 @@ function createTableRow(item) {
   );
   deadlineTd.append(deadlineSpan);
   const actionTd = document.createElement('td');
-  actionTd.classList.add('flex', 'gap-3', 'justify-center', 'pb-5');
+  actionTd.classList.add(
+    'flex',
+    'gap-3',
+    'justify-center',
+    'p-5',
+    'border',
+    'border-slate-300'
+  );
   //delete icon
   const deleteIcon = document.createElement('img');
   deleteIcon.src = './assets/svg/trash-solid.svg';
@@ -189,16 +201,15 @@ function createTableRow(item) {
 }
 
 function deleteHandler(e) {
-  // console.log(e.target.id)
   let id = e.target.id;
   todoItems = todoItems.filter((item) => item.id != id);
   renderData(todoItems);
 }
 
 function editHandler(e) {
-  // console.log(e.target.id);
+  submitButton.innerText = 'SAVE CHANGES';
   const findItemForEdit = todoItems.find((item) => item.id == e.target.id);
-  // console.log(findItemForEdit);
+
   taskTitle.value = findItemForEdit.title;
   taskDeadline.value = findItemForEdit.deadline;
   statusSelect.value = findItemForEdit.status;
@@ -211,17 +222,32 @@ function editHandler(e) {
 }
 
 function editData(id) {
-  const findedTodo = todoItems.find((item) => item.id == id);
-  console.log(findedTodo);
+  let findedTodo = todoItems.find((item) => item.id == id);
 
+  // findedTodo.priorityColor=''
+  // findedTodo.statusColor=''
   findedTodo.deadline = taskDeadline.value;
   findedTodo.title = taskTitle.value;
   findedTodo.status = statusSelect.value;
   findedTodo.priority = prioritySelect.value;
+  findedTodo.priorityColor = changePriority();
+  findedTodo.statusColor = changeStatus();
 
-  renderData(todoItems);
   isEdit = {
     mode: false,
     id: null,
   };
+  renderData(todoItems);
+  console.log('here');
 }
+
+// function saveItems() {
+//   localStorage.setItem('todoItems', JSON.stringify(todoItems));
+// }
+
+// function localStorageGet() {
+//   const todoItems = JSON.parse(localStorage.getItem('todoItems'));
+//   renderData(todoItems);
+// }
+
+// localStorageGet();
