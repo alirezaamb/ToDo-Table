@@ -178,17 +178,17 @@ function createTableRow(item) {
   //delete icon
   const deleteIcon = document.createElement('img');
   deleteIcon.src = './assets/svg/trash-solid.svg';
-  deleteIcon.classList.add('w-4', 'cursor-pointer');
+  deleteIcon.classList.add('w-6', 'cursor-pointer', 'bg-red-500', 'rounded');
   deleteIcon.setAttribute('id', item.id);
   //edit icon
   const editIcon = document.createElement('img');
   editIcon.src = './assets/svg/edit-solid.svg';
-  editIcon.classList.add('w-4', 'cursor-pointer');
+  editIcon.classList.add('w-6', 'cursor-pointer', 'bg-blue-500', 'rounded');
   editIcon.setAttribute('id', item.id);
   //eye icon
   const eyeIcon = document.createElement('img');
   eyeIcon.src = './assets/svg/eye-solid.svg';
-  eyeIcon.classList.add('w-4', 'cursor-pointer');
+  eyeIcon.classList.add('w-6', 'cursor-pointer', 'bg-gray-500', 'rounded');
 
   actionTd.append(deleteIcon, editIcon, eyeIcon);
 
