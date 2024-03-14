@@ -14,7 +14,11 @@ const prioritySelect = document.getElementById('priority_select');
 const statusSelect = document.getElementById('status_select');
 const taskDeadline = document.getElementById('datepicker');
 
-let todoItems = [];
+let todoItems = localStorageGet();
+console.log(todoItems);
+if (todoItems.length !== 0) {
+  renderData(todoItems);
+}
 
 let isEdit = {
   mode: false,
@@ -81,8 +85,7 @@ function submitHandler(event) {
       };
       todoItems.push(todo);
 
-      // saveItems();
-      // localStorageGet();
+      saveItems(todoItems);
       renderData(todoItems);
     } else {
       editData(isEdit.id);
@@ -204,6 +207,7 @@ function deleteHandler(e) {
   let id = e.target.id;
   todoItems = todoItems.filter((item) => item.id != id);
   renderData(todoItems);
+  saveItems(todoItems);
 }
 
 function editHandler(e) {
@@ -223,9 +227,6 @@ function editHandler(e) {
 
 function editData(id) {
   let findedTodo = todoItems.find((item) => item.id == id);
-
-  // findedTodo.priorityColor=''
-  // findedTodo.statusColor=''
   findedTodo.deadline = taskDeadline.value;
   findedTodo.title = taskTitle.value;
   findedTodo.status = statusSelect.value;
@@ -238,16 +239,15 @@ function editData(id) {
     id: null,
   };
   renderData(todoItems);
-  console.log('here');
+  saveItems(todoItems);
+  // console.log('here');
 }
 
-// function saveItems() {
-//   localStorage.setItem('todoItems', JSON.stringify(todoItems));
-// }
+function saveItems() {
+  localStorage.setItem('todoItems', JSON.stringify(todoItems));
+}
 
-// function localStorageGet() {
-//   const todoItems = JSON.parse(localStorage.getItem('todoItems'));
-//   renderData(todoItems);
-// }
-
-// localStorageGet();
+function localStorageGet() {
+  const todoItems = JSON.parse(localStorage.getItem('todoItems')) || [];
+  return todoItems;
+}
