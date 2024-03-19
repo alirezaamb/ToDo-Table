@@ -69,29 +69,32 @@
         </div>
       </header>
       <main>
-        <table class="container m-3">
-          <thead>
-            <th class="flex items-start">Task Name</th>
-            <th>Priority</th>
-            <th>Status</th>
-            <th>Deadline</th>
-            <th>Action</th>
+        <table class="container my-3">
+          <thead class="">
+            <tr class="h-[40px]">
+              <th class="text-left border border-slate-300">Task Name</th>
+              <th class="border border-slate-300">Priority</th>
+              <th class="border border-slate-300">Status</th>
+              <th class="border border-slate-300">Deadline</th>
+              <th class="border border-slate-300">Action</th>
+            </tr>
           </thead>
-          <tbody class="">
-            <tr class="p-4 text-center">
-              <td class="text-left pb-5">do Homework</td>
-              <td class="pb-5">
+          <tbody id="table_body" class="">
+            <!-- samples -->
+            <!-- <tr class="p-4 text-center h-[50px]">
+              <td class="text-left border border-slate-300">do Homework</td>
+              <td class="border border-slate-300">
                 <span class="bg-gray-400 px-3 py-1 rounded-2xl">Low</span>
               </td>
-              <td class="pb-5">
+              <td class="border border-slate-300">
                 <span class="bg-red-500 px-3 py-1 rounded-2xl">Todo</span>
               </td>
-              <td class="pb-5">
+              <td class="border border-slate-300">
                 <span class="border rounded-2xl px-2 py-1 border-blue-500"
                   >1401/12/11</span
                 >
               </td>
-              <td class="flex gap-3 justify-center pb-5">
+              <td class="flex gap-3 justify-center border border-slate-300 p-5">
                 <svg
                   class="w-4 cursor-pointer"
                   xmlns="http://www.w3.org/2000/svg"
@@ -123,8 +126,8 @@
                   />
                 </svg>
               </td>
-            </tr>
-            <tr class="p-4 text-center">
+            </tr> -->
+            <!-- <tr class="p-4 text-center">
               <td class="text-left pb-5">do Homework</td>
               <td class="pb-5">
                 <span class="bg-yellow-400 px-3 py-1 rounded-2xl">Medium</span>
@@ -215,61 +218,72 @@
                   />
                 </svg>
               </td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
       </main>
     </div>
     <!-- modal -->
     <div
+      id="modal_overlay"
       class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 w-full h-full bg-gray-500 bg-opacity-70 hidden"
+    ></div>
+    <div
+      id="modal_body"
+      class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 w-2/4 h-2/4 bg-gray-200 rounded p-2 hidden"
     >
-      <div
-        class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 w-2/4 h-2/4 bg-gray-200 rounded p-2"
-      >
-        <form class="flex flex-wrap gap-1 justify-evenly">
-          <label>
-            Task Title: <br />
-            <input
-              class="rounded"
-              type="text"
-              placeholder="Task"
-              class="border"
-            /> </label
-          ><br />
-          <label
-            >Priority: <br />
-            <select class="rounded cursor-pointer" name="Priority" id="">
-              <option value="">Low</option>
-              <option value="">Medium</option>
-              <option value="">High</option>
-            </select> </label
-          ><br />
-          <label
-            >Status: <br />
-            <select class="rounded cursor-pointer" name="Status" id="">
-              <option value="">ToDo</option>
-              <option value="">Doing</option>
-              <option value="">Done</option>
-            </select> </label
-          ><br />
-          <label
-            >Deadline: <br />
-            <input
-              class="rounded"
-              type="text"
-              id="datepicker"
-              placeholder="Select Date"
-            /> </label
-          ><br />
-          <button
-            class="absolute bottom-14 bg-green-300 px-3 py-1 rounded-md hover:bg-green-700 hover:text-white transition-all"
-            type="submit"
+      <form class="flex flex-wrap gap-1 justify-evenly">
+        <label>
+          Task Title: <br />
+          <input
+            class="rounded-md"
+            type="text"
+            placeholder="Task"
+            class="border"
+            id="task_input"
+          /> </label
+        ><br />
+        <label
+          >Priority: <br />
+          <select
+            class="rounded-md cursor-pointer"
+            name="Priority"
+            id="priority_select"
           >
-            submit
-          </button>
-        </form>
-      </div>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select> </label
+        ><br />
+        <label
+          >Status: <br />
+          <select
+            class="rounded-md cursor-pointer"
+            name="Status"
+            id="status_select"
+          >
+            <option value="ToDo">ToDo</option>
+            <option value="Doing">Doing</option>
+            <option value="Done">Done</option>
+          </select> </label
+        ><br />
+        <label
+          >Deadline: <br />
+          <input
+            class="rounded-md"
+            type="text"
+            id="datepicker"
+            placeholder="Select Date"
+          /> </label
+        ><br />
+        <button
+          id="submit_button"
+          class="absolute bottom-14 bg-green-300 px-3 py-1 rounded-md hover:bg-green-700 hover:text-white transition-all"
+          type="submit"
+        >
+          Submit
+        </button>
+      </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="./main.js"></script>
