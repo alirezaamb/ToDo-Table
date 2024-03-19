@@ -232,14 +232,13 @@
       id="modal_body"
       class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 w-2/4 h-2/4 bg-gray-200 rounded p-2 hidden"
     >
-      <form class="flex flex-wrap gap-1 justify-evenly">
+      <form class="flex flex-wrap gap-1 justify-evenly gap-y-3">
         <label>
           Task Title: <br />
           <input
-            class="rounded-md"
+            class="rounded-md border"
             type="text"
             placeholder="Task"
-            class="border"
             id="task_input"
           /> </label
         ><br />
@@ -276,6 +275,10 @@
             placeholder="Select Date"
           /> </label
         ><br />
+        <lable
+          >Description: <br />
+          <input type="text" class="rounded-md p-5" id="Description_input"
+        /></lable>
         <button
           id="submit_button"
           class="absolute bottom-14 bg-green-300 px-3 py-1 rounded-md hover:bg-green-700 hover:text-white transition-all"
@@ -284,6 +287,37 @@
           Submit
         </button>
       </form>
+    </div>
+    <!-- more info modal -->
+
+    <div
+      class="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 w-2/4 h-2/4 bg-gray-200 rounded p-2 text-cyan-950 flex flex-col gap-7"
+      id="info-modal"
+    >
+      <div>
+        <h3 class="font-medium">task title:</h3>
+        <p>Lorem ipsum dolor sit</p>
+      </div>
+      <div>
+        <h3 class="font-medium">Description:</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur,
+          ducimus!
+        </p>
+      </div>
+      <div class="flex justify-between">
+        <h3 class="font-medium">deadline:</h3>
+        <p>2024/12/12</p>
+      </div>
+      <div class="flex justify-between">
+        <h3 class="font-medium">today:</h3>
+        <p>2024/11/11</p>
+      </div>
+      <button
+        class="absolute -right-6 -top-6 bg-gray-300 py-1 px-3 rounded-full hover:bg-gray-700 hover:text-white transition-all"
+      >
+        X
+      </button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="./main.js"></script>

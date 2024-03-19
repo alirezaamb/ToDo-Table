@@ -200,7 +200,7 @@ function createTableRow(item) {
   // //edit icon
   editIcon.addEventListener('click', editHandler);
   // //eye icon
-  // eyeIcon.addEventListener("click", viewHandler)
+  eyeIcon.addEventListener('click', viewHandler);
 }
 
 function deleteHandler(e) {
