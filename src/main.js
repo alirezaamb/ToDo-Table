@@ -48,7 +48,6 @@ function changeStatus() {
 
       break;
   }
-  // console.log(statusColor, status)
   return statusColor;
 }
 
@@ -65,7 +64,6 @@ function changePriority() {
       priorityColor = 'bg-green-500';
       break;
   }
-  // console.log(prioritySelect.value)
   return priorityColor;
 }
 
@@ -203,13 +201,14 @@ function createTableRow(item) {
   eyeIcon.addEventListener('click', viewHandler);
 }
 
+//delete
 function deleteHandler(e) {
   let id = e.target.id;
   todoItems = todoItems.filter((item) => item.id != id);
   renderData(todoItems);
   saveItems(todoItems);
 }
-
+//submit the edited
 function editHandler(e) {
   submitButton.innerText = 'SAVE CHANGES';
   const findItemForEdit = todoItems.find((item) => item.id == e.target.id);
@@ -224,7 +223,7 @@ function editHandler(e) {
     id: findItemForEdit.id,
   };
 }
-
+//get the selected todo for edit
 function editData(id) {
   let findedTodo = todoItems.find((item) => item.id == id);
   findedTodo.deadline = taskDeadline.value;
@@ -243,6 +242,7 @@ function editData(id) {
   // console.log('here');
 }
 
+//local storage
 function saveItems() {
   localStorage.setItem('todoItems', JSON.stringify(todoItems));
 }
